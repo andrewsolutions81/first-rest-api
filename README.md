@@ -1,4 +1,4 @@
-# first-rest-api
+# first-rest-api Movie app
 
 ## Based on this video
   [Tu primer REST API usando Node.js, ¿Que es una REST API?](https://www.youtube.com/watch?v=bK3AJfs7qNY)
@@ -44,4 +44,58 @@ express is a node framework that is helful for writting information to the serve
 ```app.listen(3000, () => {
   console.log(`Server on port ${3000}`)
 })```
+
+13 test with command
+```node src/index.js```
+
+14 on browser go to
+[http://localhost:3000/](http://localhost:3000/)
+error must appear on my case, nothing at all, it is ok
+
+15 in index.js require morgan
+```const morgan = require('morgan');```
+it is a middleware that reads incoming data
+
+16 execute the middleware
+```app.use(morgan('dev'));```
+morgan let me see in console incoming data
+
+17 on terminal/cmd run again
+```node src/index.js```
+Cannot Get / will appear
+
+18 in index.js for receiving json files add
+```app.use(express.json());```
+
+19 in index.js for receiving js forms add
+```app.use(express.urlencoded({extended: false}));```
+it recibes nothing to heavy as images
+
+20 install nodemon on console/terminal/cmd for refreshing
+```npm i nodemon -D```
+
+21 change app.set('port', 3000) to
+```app.set('port', process.env.PORT || 3000)```
+it means either  process.env.PORT (deployment server port)  or default 3000 port
+
+22 create routes
+```//3-22 create routes
+app.get('/', (req, res) => {
+  res.send('Hellow World 1')
+})
+```
+23 in package.json in scripts add
+```"nodemon src/index.js"```
+for executing nodemon
+
+24 in terminal/cmd run dev
+```npm run dev```
+
+25 in app.js change route to respond wiht a json file and for the app a title with hello world
+```app.get('/', (req, res) => {
+  res.json({"Title":"Hello world 2"})
+})```
+
+
+
 
